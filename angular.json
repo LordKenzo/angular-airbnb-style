@@ -129,5 +129,14 @@
       }
     }
   },
-  "defaultProject": "angular-airbnb-style"
+  "defaultProject": "angular-airbnb-style",
+  "schematics": {
+    "@schematics/angular:component": {
+      "styleext": "scss",
+      "spec": false
+    },
+    "@schematics/angular:module": {
+      "spec": false
+    }
+  }
 }
