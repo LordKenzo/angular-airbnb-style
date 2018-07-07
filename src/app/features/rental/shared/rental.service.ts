@@ -8,7 +8,7 @@ import { Rental } from './rental.model';
 export class RentalService {
 
   rentals: any[] = [{
-    id: 1,
+    id: '1',
     title: 'Central Apartment',
     city: 'New York',
     street: 'Times Sqaure',
@@ -21,7 +21,7 @@ export class RentalService {
     createdAt: '24/12/2017'
   },
   {
-    id: 2,
+    id: '2',
     title: 'Central Apartment 2',
     city: 'San Francisco',
     street: 'Main street',
@@ -34,7 +34,7 @@ export class RentalService {
     createdAt: '24/12/2017'
   },
   {
-    id: 3,
+    id: '3',
     title: 'Central Apartment 3',
     city: 'Bratislava',
     street: 'Hlavna',
@@ -47,7 +47,7 @@ export class RentalService {
     createdAt: '24/12/2017'
   },
   {
-    id: 4,
+    id: '4',
     title: 'Central Apartment 4',
     city: 'Berlin',
     street: 'Haupt strasse',
@@ -65,7 +65,7 @@ export class RentalService {
   getRentals(): Observable<Rental[]> {
     /*const observables: Observable<Rental[]> = of(this.rentals);
     return observables;*/
-    const observable: Observable<Rental[]> = new Observable((observer) => {
+    return new Observable<Rental[]>((observer) => {
       setTimeout( () => {
         observer.next( this.rentals );
       }, 1000);
@@ -76,7 +76,21 @@ export class RentalService {
         observer.complete();
       }, 3000);
     });
-    return observable;
+  }
 
+  getRentalById(rentalId: string): Observable<Rental> {
+    return new Observable<Rental>( (observer) => {
+      setTimeout(() => {
+        const foundRental = this.rentals.find(rental => {
+          // console.log(rental.id, rentalId);
+          return rental.id === rentalId;
+        });
+        if (foundRental) {
+          observer.next(foundRental);
+        } else {
+          observer.error(`No value for id ${rentalId}`);
+        }
+      }, 500);
+    });
   }
 }
