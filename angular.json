@@ -127,7 +127,7 @@
           }
         }
       }
-    },
+    }
   },
   "defaultProject": "angular-airbnb-style"
 }
