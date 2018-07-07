@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { Rental } from './../shared/rental.model';
+import { Rental } from '../shared/rental.model';
 
 @Component({
   selector: 'app-rental-list-item',
