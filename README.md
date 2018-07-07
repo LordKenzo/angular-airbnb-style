@@ -30,3 +30,5 @@
 * ng g i features/rental/shared/rental --spec false
 * rename the file created above: rental.ts to rental.model.ts
 * mkdir assets/db
+* cd src/app/feature/rental
+* ng g c rental-detail --module=rental
