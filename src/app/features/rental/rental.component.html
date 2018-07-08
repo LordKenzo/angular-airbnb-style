@@ -1,5 +1,4 @@
 <div *ngIf='rentals && !rentals.error'>
-  {{rentals}}
   <app-rental-list [rentals]='rentals'></app-rental-list>
 </div>
 <div *ngIf='rentals && rentals.error'>

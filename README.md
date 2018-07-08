@@ -50,6 +50,7 @@
 * git checkout -b feature/rental-map
 * npm install @agm/core@1.0.0-beta.3 --save
 * ng g c shared/map
+* git checkout -b feature/rental-map-part2
 
 # Branch history:
 
@@ -58,3 +59,5 @@
 * features/rental-detail
 * server/init
 * feature/rental-detail-improvements
+* feature/rental-map
+* feature/rental-map-part2

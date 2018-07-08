@@ -13,6 +13,7 @@ import { MapModule } from './map/map.module';
     UppercasePipe
   ],
   exports: [
+    CommonModule, // Export it for use on my Features Module
     UppercasePipe,
     MapModule
   ]
