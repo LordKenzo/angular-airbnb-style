@@ -7,5 +7,8 @@ export const AppRoutes: Routes = [
   },
   {
     path: '', redirectTo: 'rentals', pathMatch: 'full'
+  },
+  {
+    path: '**', loadChildren: 'src/app/features/rental/rental.module#RentalModule'
   }
 ];

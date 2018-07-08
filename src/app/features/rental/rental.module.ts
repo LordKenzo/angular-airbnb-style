@@ -1,5 +1,4 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
 
 import { NgPipesModule } from 'ngx-pipes';
 
@@ -14,7 +13,6 @@ import { SharedModule } from './../../shared/shared.module';
 
 @NgModule({
   imports: [
-    CommonModule,
     RentalRountingModule,
     NgPipesModule,
     SharedModule
@@ -24,6 +22,7 @@ import { SharedModule } from './../../shared/shared.module';
     RentalListComponent,
     RentalListItemComponent,
     RentalDetailComponent
-  ]
+  ],
+  providers: []
 })
 export class RentalModule { }

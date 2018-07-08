@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { Rental } from '../shared/rental.model';
 
 @Component({
@@ -6,13 +6,8 @@ import { Rental } from '../shared/rental.model';
   templateUrl: './rental-list-item.component.html',
   styleUrls: ['./rental-list-item.component.scss']
 })
-export class RentalListItemComponent implements OnInit {
+export class RentalListItemComponent {
 
   @Input() rental: Rental;
-
-  constructor() { }
-
-  ngOnInit() {
-  }
 
 }
