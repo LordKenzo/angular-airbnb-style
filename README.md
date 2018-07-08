@@ -44,9 +44,13 @@
 * git checout -b features/rental-detail
 * cd src/app/feature/rental
 * ng g c rental-detail --module=rental
+* git checkout -b feature/rental-detail-improvements
+* ng g m shared
 
 # Branch history:
 
 * core/header-component
 * features/rental
 * features/rental-detail
+* server/init
+* feature/rental-detail-improvements

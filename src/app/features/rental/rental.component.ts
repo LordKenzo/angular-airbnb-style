@@ -15,7 +15,7 @@ export class RentalComponent implements OnInit {
 
   ngOnInit() {
     this.rentalService.getRentals().subscribe(
-      rentals => this.rentals = rentals,
+      rentals => this.rentals = rentals['data'],
       err => console.error(err),
       () => console.log('Done.'));
   }
