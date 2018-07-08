@@ -1,0 +1,34 @@
+{
+  "name": "node-airbnb-style",
+  "version": "1.0.0",
+  "description": "Backend for angular-aibnb-style project",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon node index",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/LordKenzo/angular-airbnb-style.git"
+  },
+  "keywords": [
+    "tutorial",
+    "studying",
+    "angular",
+    "nodejs"
+  ],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/LordKenzo/angular-airbnb-style/issues"
+  },
+  "homepage": "https://github.com/LordKenzo/angular-airbnb-style#readme",
+  "dependencies": {
+    "express": "^4.16.3",
+    "moment": "^2.22.2",
+    "mongoose": "^5.2.1"
+  },
+  "devDependencies": {
+    "nodemon": "^1.17.5"
+  }
+}
