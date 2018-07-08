@@ -7,7 +7,7 @@ import { NgModule } from '@angular/core';
     RouterModule.forRoot(
       AppRoutes,
       {
-        enableTracing: true,
+        enableTracing: false,
         useHash: false
       }
     )
