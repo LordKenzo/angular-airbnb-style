@@ -45,7 +45,11 @@
 * cd src/app/feature/rental
 * ng g c rental-detail --module=rental
 * git checkout -b feature/rental-detail-improvements
+* npm install --save font-awesome
 * ng g m shared
+* git checkout -b feature/rental-map
+* npm install @agm/core@1.0.0-beta.3 --save
+* ng g c shared/map
 
 # Branch history:
 

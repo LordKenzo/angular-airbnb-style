@@ -1,4 +1,4 @@
-<section id="rentalDetails" *ngIf="rental">
+<section id="rentalDetails" *ngIf="rental && !rental.error">
   <div class="upper-section">
     <div class="row">
       <div class="col-md-6">
@@ -6,7 +6,7 @@
       </div>
       <div class="col-md-6">
         <!-- Will be replaced with map !!!! -->
-        <img src="{{rental.image}}" alt="">
+        <app-map></app-map>
       </div>
     </div>
   </div>
@@ -47,4 +47,9 @@
       <div class="col-md-4"> BOOKING</div>
     </div>
   </div>
+</section>
+
+<section id="rentalDetails" *ngIf="rental && rental.error">
+  <h1>Something went wrong...</h1>
+  <pre>{{rental.detail}}</pre>
 </section>
