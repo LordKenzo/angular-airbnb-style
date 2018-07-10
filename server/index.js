@@ -1,21 +1,31 @@
 const express = require('express');
 const mongoose = require('mongoose');
-const config = require('./config/dev');
-const rental = require('./models/rental');
+const bodyParser = require('body-parser');
+const {environment, config} = require('./config');
+const {userRoutes, rentalRoutes} = require('./routes');
+
 const FakeDb = require('./fakedb');
-const rentalRoutes = require('./routes/rental');
 
 const app = express();
 const port = process.env.PORT || 3001;
 
-mongoose.connect(config.DB_URI, { useNewUrlParser: true })
-.then( () => {
-  const fakeDb = new FakeDb();
-  fakeDb.seedDb();
-})
-.catch( (err) => console.log('ERRORE', err));
+mongoose.connect(environment.DB_URI, { useNewUrlParser: true })
+  .then( () => {
+    console.log('Connessione al database avvenuta!')
+    const fakeDb = new FakeDb();
+    fakeDb.seedDb();
+  },
+    err => console.log('Errore connessione al Database!')
+  );
 
-app.use('/api/v1/rentals', rentalRoutes);
+app.use(bodyParser.json());
+
+app.use(`/${config.API.path}/${config.API.version}/rentals`, rentalRoutes);
+app.use(`/${config.API.path}/${config.API.version}/users`, userRoutes);
+
+app.all('*', function(req, res){
+  res.status(404).send({'error':'404: Something goes wrong...'});
+})
 
 app.listen(port, function() {
   console.log(`Server listening on ${port}`);
