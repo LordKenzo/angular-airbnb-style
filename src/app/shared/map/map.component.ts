@@ -1,7 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 
 import { MapService } from './shared/map.service';
-import { CacheService } from 'src/app/core/cache/cache.service';
+import { CacheService } from '../../core/cache/cache.service';
 
 @Component({
   selector: 'app-map',

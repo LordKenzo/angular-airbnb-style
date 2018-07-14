@@ -1,4 +1,4 @@
-<section id="rentalDetails" *ngIf="rental && !rental.error">
+<section id="rentalDetails" *ngIf="rental && !rental['error']">
   <div class="upper-section">
     <div class="row">
       <div class="col-md-6">
@@ -49,7 +49,7 @@
   </div>
 </section>
 
-<section id="rentalDetails" *ngIf="rental && rental.error">
+<section id="rentalDetails" *ngIf="rental && rental['error']">
   <h1>Something went wrong...</h1>
   <pre>{{rental.detail}}</pre>
 </section>

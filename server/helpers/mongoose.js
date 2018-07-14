@@ -4,7 +4,7 @@ module.exports = {
     let normalizeErrors = [];
     for(let property in errors){
       if(errors.hasOwnProperty(property)){
-        normalizeErrors.push({title: property, detail: errors[property].message});
+        normalizeErrors.push({source: 'MongoDB Query', title: property, description: errors[property].message});
       }
     }
     return normalizeErrors;

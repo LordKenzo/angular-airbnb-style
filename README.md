@@ -21,7 +21,7 @@
 * restart ng serve
 * copy navbar from bootstrap
 * angular.json: stylePreprocessorOptions sotto architect->build
-* git checout -b features/rental
+* git checkout -b features/rental
 * ng g m features/rental --spec false
 * change to SCSS from CSS: ng config defaults.styleExt=scss or try with ng config * schematics.@schematics/angular:component.styleext scss
 * ng config schematics.@schematics/angular:component.spec false
@@ -41,6 +41,8 @@
 * ng g i features/rental/shared/rental --spec false
 * rename the file created above: rental.ts to rental.model.ts
 * mkdir assets/db
+* git checout -b server/init
+* npm install --save express moment
 * git checout -b features/rental-detail
 * cd src/app/feature/rental
 * ng g c rental-detail --module=rental
@@ -51,6 +53,25 @@
 * npm install @agm/core@1.0.0-beta.3 --save
 * ng g c shared/map
 * git checkout -b feature/rental-map-part2
+* git checkout -b server/auth-server
+* npm install bcrypt body-parser moment jsonwebtoken --save
+* git checkout -b feature/client-auth
+* ng g m features/auth
+* ng g c features/auth/auth --flat
+* ng g c features/auth/login
+* ng g c features/auth/register
+* ng g class features/auth/auth.routes (rename className AuthRoutes)
+* ng g m features/auth/auth-routing --flat
+* Now update your app.routes.ts and create your routes inside auth.routes
+* Check if app.module import auth.module, if so, delete it
+* Insert code in your auth-routing.module, delete CommonModule and import RouterModule from '@angular/router' and exports RouterModule, import AuthRoutes and use RouterModule.forChild(AuthRoutes)
+* In AuthModule import AuthRoutingModule
+* npm i --save jquery
+* ng g s features/auth/shared/auth --flat --spec false
+* ng g s shared/form/form --spec false
+* npm install @auth0/angular-jwt --save
+* npm i --save moment
+* ng g m core/auth
 
 # Branch history:
 
@@ -61,3 +82,5 @@
 * feature/rental-detail-improvements
 * feature/rental-map
 * feature/rental-map-part2
+* server/auth-server
+* feature/client-auth
