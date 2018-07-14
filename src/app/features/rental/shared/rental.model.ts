@@ -7,6 +7,7 @@ export interface Rental {
   image: string;
   bedrooms: string;
   description: string;
+  subtitle: string;
   dailyRate: number;
   shared: boolean;
   createdAt: string;

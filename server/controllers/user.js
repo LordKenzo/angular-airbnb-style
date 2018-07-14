@@ -19,9 +19,7 @@ exports.auth = function(req, res) {
     user.comparePassword(password, function(err, isMatch) {
       if (err) return res.status(422).send({errors: normalizeErrors(err.errors)});
       else if (!isMatch) {
-        res.status(422).json({
-          errors: normalizeErrors(err.errors)
-        });
+        return send422Message(res, '/users/register', 'Invalid Username or Email!', 'Username or Email not valid!');
       } else {
         // Generate JWT Token
         const token = jwt.sign({
