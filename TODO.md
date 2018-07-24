@@ -14,7 +14,9 @@
   ### [ ] Extend User Model for LoginAttempts/Lock Account
   ### [ ] Store Login Attempts
   ### [ ] Lock/Unlock Account
-# Authentication/Registration with JWT - (Frontend)
+  ### [ ] Reset Account Password
+  ### [ ] Invalidate All Tokens
+# Authentication/Registration with JWT - (Frontend - Auth Module)
   ### [x] Create branch on git feature/client-auth
   ### [x] Create Auth Module inside feature with Auth container Component (This Container is irrevelant for now...maybe I'll drop it?)
   ### [x] Create Login Component inside Auth Module
@@ -47,5 +49,6 @@
   ### [x] Create auth.interceptors
   ### [x] Provide Interceptor in AppModule
   ### [x] Send Token to Server with Interceptors
+  ### [ ] Create a Profile Dashboard inside Auth Module
 
 # Admin Dashboard
