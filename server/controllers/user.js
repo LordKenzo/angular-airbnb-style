@@ -3,6 +3,51 @@ const {normalizeErrors} = require('../helpers/mongoose');
 const jwt = require('jsonwebtoken');
 const {environment} = require('../config');
 
+exports.update = function(req, res) {
+  const {email, currentPassword, newPassword, confirmPassword, level} = req.body;
+  // console.log(email, currentPassword, newPassword, confirmPassword, userLevel);
+  if(!currentPassword || (newPassword !== confirmPassword) || !email) {
+    return send422Message(res, '/users/auth', 'Data Missing!', 'Provide full user information');
+  } else {
+    User.findOne({email}, function(err, user) {
+      if (err) {
+        return res.status(422).send({errors: normalizeErrors(err.errors)});
+      }
+
+      if (!user) {
+        return send422Message(res, '/users/auth', 'Invalid User', 'User doesn\'t exists!');
+      }
+
+      user.comparePassword(currentPassword, function(err, isMatch) {
+        if (err) return res.status(422).send({errors: normalizeErrors(err.errors)});
+        else if (!isMatch) {
+          return send422Message(res, '/users/register', 'Invalid Password or Email!', 'Password or Email not valid!');
+        } else {
+          // Generate JWT Token
+          if(newPassword) {
+            user.password = newPassword;
+
+          }
+          if(level) {
+            user.level = level;
+          }
+          user.save();
+          const token = jwt.sign({
+            userId: user.id,
+            username: user.username,
+            email: user.email,
+            level: user.level
+          }, environment.JWT_SECRET, { expiresIn: '1h'});
+          res.status(200).send({token});
+
+        }
+      });
+
+    });
+  }
+//   res.status(200).send({ message: 'ok' });
+}
+
 exports.auth = function(req, res) {
   const {email, password} = req.body;
   if (!password || !email) {
@@ -22,9 +67,12 @@ exports.auth = function(req, res) {
         return send422Message(res, '/users/register', 'Invalid Username or Email!', 'Username or Email not valid!');
       } else {
         // Generate JWT Token
+        console.log(user);
         const token = jwt.sign({
           userId: user.id,
           username: user.username,
+          email: user.email,
+          level: user.level
         }, environment.JWT_SECRET, { expiresIn: '1h'});
         res.status(200).send({token});
 

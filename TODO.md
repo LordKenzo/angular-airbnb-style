@@ -16,6 +16,8 @@
   ### [ ] Lock/Unlock Account
   ### [ ] Reset Account Password
   ### [ ] Invalidate All Tokens
+  ### [x] Create User PUT Routes (users/update)
+  ### [ ] Refactor username as login field instead email
 # Authentication/Registration with JWT - (Frontend - Auth Module)
   ### [x] Create branch on git feature/client-auth
   ### [x] Create Auth Module inside feature with Auth container Component (This Container is irrevelant for now...maybe I'll drop it?)
@@ -49,6 +51,8 @@
   ### [x] Create auth.interceptors
   ### [x] Provide Interceptor in AppModule
   ### [x] Send Token to Server with Interceptors
-  ### [ ] Create a Profile Dashboard inside Auth Module
+  ### [x] Create a Profile Dashboard inside Auth Module with a Profile Component
+  ### [x] Create a Form for Profile
+  ### [ ] Refactor username as login field instead email
 
 # Admin Dashboard

@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 
 import { UppercasePipe } from './pipes/uppercase.pipe';
 import { MapModule } from './map/map.module';
+import { FieldErrorDisplayComponent } from './form/field-error-display/field-error-display.component';
 
 @NgModule({
   imports: [
@@ -10,12 +11,14 @@ import { MapModule } from './map/map.module';
     MapModule
   ],
   declarations: [
-    UppercasePipe
+    UppercasePipe,
+    FieldErrorDisplayComponent
   ],
   exports: [
     CommonModule, // Export it for use on my Features Module
     UppercasePipe,
-    MapModule
+    MapModule,
+    FieldErrorDisplayComponent
   ]
 })
 export class SharedModule { }

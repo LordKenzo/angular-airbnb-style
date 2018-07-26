@@ -1,0 +1,90 @@
+<section id="profile-form">
+  <h1>{{profile.username}}</h1>
+  <h6 *ngIf="isDevMode()">Debug Purpose: level: {{profile.level}} - id: {{profile.userId}}</h6>
+  <div *ngIf="notifyMessage" class="alert alert-success">
+    {{notifyMessage}}
+  </div>
+  <div *ngIf="errors.length > 0" class="alert alert-danger">
+    <p *ngFor="let error of errors">
+      {{error.description}}
+    </p>
+  </div>
+  <form [formGroup]="profileForm" (ngSubmit)="save()" (keyup.enter)="save()">
+    <div class="form-row">
+      <div class="form-group col-md-6">
+        <label for="email" class="control-label required">Email</label>
+        <input type="email"
+          class="form-control"
+          [ngClass]="{'is-invalid' : isTouched('email') && !isValidInput('email'),
+            'is-valid': !isPristine('email') && isValidInput('email')}"
+          id="email"
+          placeholder="Email"
+          formControlName="email" >
+        <app-field-error-display
+          [displayError]="!isValidInput('email')"
+          errorMsg="Please fill your email"
+          [ngClass]="displayFieldCss('email')">
+        </app-field-error-display>
+        <div class="valid-feedback">
+          Email Looks good!
+        </div>
+      </div>
+      <div *ngIf="profile.level==='User' || profile.level==='Super User' || profile.level==='Admin'" class="form-group col-md-6">
+        <label for="level">Level</label>
+        <select id="level" class="form-control" formControlName="level">
+          <option selected>Choose...</option>
+          <option>User</option>
+          <option>Bronze Member</option>
+          <option>Silver Member</option>
+          <option>Gold Member</option>
+          <option>Moderator</option>
+          <option>Super User</option>
+          <option>Admin</option>
+        </select>
+      </div>
+    </div>
+    <div class="form-row">
+      <p>Any changes need to be validate by current Password:</p>
+      <div class="form-group col-md-12">
+        <label for="currentPassword" class="control-label required">Current Password</label>
+        <input type="password"
+          class="form-control"
+          [ngClass]="{'is-invalid' : isTouched('currentPassword') && !isValidInput('currentPassword'), 'is-valid': !isPristine('currentPassword') && isValidInput('currentPassword')}"
+          id="currentPassword"
+          placeholder="Password"
+          formControlName="currentPassword">
+        <app-field-error-display
+          [displayError]="!isValidInput('currentPassword')"
+          errorMsg="Please fill your password"
+          [ngClass]="displayFieldCss('currentPassword')">
+        </app-field-error-display>
+        <div class="valid-feedback">
+          Password Looks good!
+        </div>
+      </div>
+      <p>Fill belowe if you need a new Password:</p>
+    </div>
+    <div class="form-row">
+      <div class="form-group col-md-6">
+        <label for="newPassword">New Password</label>
+        <input type="password" class="form-control"
+
+        id="newPassword" placeholder="New Password" formControlName="newPassword">
+      </div>
+      <div class="form-group col-md-6">
+        <label for="confirmPassword">Confirm New Password</label>
+        <input type="password" class="form-control" id="confirmPassword" placeholder="Confirm New Password" formControlName="confirmPassword">
+      </div>
+      <div class="error" *ngIf="profileForm.touched && profileForm.hasError('confirmPassword')">
+        <app-field-error-display
+          [displayError]="true"
+          errorMsg="Please confirm your new password"
+          [ngClass]="is-invalid">
+        </app-field-error-display>
+      </div>
+
+    </div>
+
+    <button type="submit" class="btn btn-primary" [disabled] = "!profileForm.valid" >Save</button>
+  </form>
+</section>

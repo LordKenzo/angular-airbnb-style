@@ -72,6 +72,8 @@
 * npm install @auth0/angular-jwt --save
 * npm i --save moment
 * ng g m core/auth
+* git checkout -b feature/profile-auth
+* ng g c features/auth/profile
 
 # Branch history:
 
@@ -84,3 +86,4 @@
 * feature/rental-map-part2
 * server/auth-server
 * feature/client-auth
+* feature/profile-auth

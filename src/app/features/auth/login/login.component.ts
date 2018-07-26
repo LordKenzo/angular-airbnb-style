@@ -38,7 +38,7 @@ export class LoginComponent implements OnInit {
       email: ['', [Validators.required,
           Validators.pattern('^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$')]],
       password: ['', Validators.required]
-    }).controls, {updateOn: 'blur'});
+    }).controls, {updateOn: 'submit'});
   }
 
   isValidInput(inputValue): boolean {
@@ -49,7 +49,12 @@ export class LoginComponent implements OnInit {
     return this.formService.isRequired(this.loginForm, inputValue);
   }
 
+  isPristine(field) {
+    return this.formService.isPristine(this.loginForm, field);
+  }
+
   login() {
+    console.log('LOGIN', this.loginForm.value);
     this.authService.login(this.loginForm.value).subscribe(
       (res) => {
         this.router.navigate(['/rentals', {login: 'success'}]);

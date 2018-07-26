@@ -6,4 +6,6 @@ router.post('/auth', User.auth);
 
 router.post('/register', User.register);
 
+router.put('/update', User.update);
+
 module.exports = router;

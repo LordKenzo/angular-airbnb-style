@@ -23,11 +23,22 @@ export class AuthService {
     return this.http.post('/api/v1/users/register', userData);
   }
 
+  update(userData: RegisterForm): Observable<any> {
+    return this.http.put('/api/v1/users/update', userData).pipe(
+      map(
+        (res) => {
+          console.log('save token', res);
+          return this.saveToken(res['token']);
+        }
+      )
+    );
+  }
+
   login(userData: any): Observable<any> {
     return this.http.post('/api/v1/users/auth', userData).pipe(
       map(
         (res) => {
-          console.log(res);
+          console.log('decode token', res);
           return this.saveToken(res['token']);
         }
       )
@@ -36,6 +47,7 @@ export class AuthService {
 
   private saveToken(token: string): string {
     this.decodedToken = helper.decodeToken(token);
+    console.log(this.decodedToken);
     localStorage.setItem ('jwt_token', token);
     localStorage.setItem ('jwt_decodedtoken', JSON.stringify(this.decodedToken));
 
@@ -52,7 +64,7 @@ export class AuthService {
 
   logout() {
     localStorage.removeItem('jwt_token');
-    localStorage.removeItem('jwt_decodeToken');
+    localStorage.removeItem('jwt_decodedtoken');
     this.decodedToken = new DecodedToken();
   }
 
@@ -62,5 +74,18 @@ export class AuthService {
 
   getUsername() {
     return this.decodedToken.username;
+  }
+
+  getUserData() {
+    return this.decodedToken;
+  }
+
+  getUserField(field: string) {
+    if (!this.decodedToken[field]) {
+      return null;
+    } else {
+      return this.decodedToken[field];
+    }
+
   }
 }
